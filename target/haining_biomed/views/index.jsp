@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hello
-  Date: 2019-12-3
-  Time: 15:37
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
 <!doctype html>
@@ -43,23 +36,20 @@
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Precision Medicine Matching System</a>
-    <ul class="navbar-nav px-3">
+    <ul class="navbar-nav px-3" id="userNav">
         <li class="nav-item">
             <a class="nav-link" href="signin">Sign In</a>
         </li>
-    </ul>
-    <ul class="navbar-nav px-3">
         <li class="nav-item">
             <a class="nav-link" href="signup">Sign Up</a>
         </li>
     </ul>
-
 </nav>
 
 <div class="container-fluid">
     <div class="row">
-        <jsp:include page="nav.jsp" >
-            <jsp:param name="active" value="dashboard" />
+        <jsp:include page="nav.jsp">
+            <jsp:param name="active" value="dashboard"/>
         </jsp:include>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -72,5 +62,37 @@
         </main>
     </div>
 </div>
+
+<script>
+    window.onload = function () {
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        if (!isLoggedIn) {
+            // 未登录,重定向到登录页面
+            window.location.href = 'signin.jsp';
+        }
+    }
+
+    const userNav = document.getElementById('userNav');
+    const username = localStorage.getItem('username');
+
+    if (isLoggedIn === 'true') {
+        userNav.innerHTML = `
+            <li class="nav-item">
+                <span class="nav-link">Welcome, ${username}</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="logoutLink">Logout</a>
+            </li>
+        `;
+
+        const logoutLink = document.getElementById('logoutLink');
+        logoutLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('username');
+            window.location.href = '/haining_biomed_war/';
+        });
+    }
+</script>
 </body>
 </html>

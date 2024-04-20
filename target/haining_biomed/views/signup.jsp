@@ -18,7 +18,6 @@
     <button type="submit">Sign Up</button>
 </form>
 <div id="signupMessage"></div>
-<a href="signin.jsp">Sign In</a>
 
 <script>
     const signupForm = document.getElementById('signupForm');
@@ -34,8 +33,12 @@
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
 
-        signupMessage.textContent = `Registration successful! Username: ${username}, Password: ${password}, Email: ${email}`;
-        signupForm.reset();
+        signupMessage.textContent = 'Registration successful! Redirecting to login page...';
+
+        // 延迟1秒后跳转到登录页面
+        setTimeout(() => {
+            window.location.href = '/signin';
+        }, 1000);
     });
 </script>
 </body>
