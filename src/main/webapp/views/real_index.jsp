@@ -38,17 +38,17 @@
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Precision Medicine Matching System</a>
     <ul class="navbar-nav px-3" id="userNav">
         <li class="nav-item">
-            <a class="nav-link" href="signin">Sign In</a>
+            <span class="nav-link">Welcome, ${username}!</span>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="signup">Sign Up</a>
+            <a class="nav-link" href="/haining_biomed_war/" id="logoutLink">Logout</a>
         </li>
     </ul>
 </nav>
 
 <div class="container-fluid">
     <div class="row">
-        <jsp:include page="false_nav.jsp">
+        <jsp:include page="nav.jsp">
             <jsp:param name="active" value="dashboard"/>
         </jsp:include>
 
@@ -63,37 +63,5 @@
     </div>
 </div>
 
-<script>
-    window.onload = function () {
-        const isLoggedIn = localStorage.getItem('isLoggedIn');
-        const username = localStorage.getItem('username');
-
-        if (!isLoggedIn || !username) {
-            // 未登录或用户名不存在,重定向到登录页面
-            window.location.href = 'signin';
-        }
-    }
-
-    const userNav = document.getElementById('userNav');
-
-    if (isLoggedIn) { // 直接使用 isLoggedIn 的布尔值
-        userNav.innerHTML = `
-        <li class="nav-item">
-            <span class="nav-link">Welcome, ${username}!</span>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" id="logoutLink">Logout</a>
-        </li>
-    `;
-
-        const logoutLink = document.getElementById('logoutLink');
-        logoutLink.addEventListener('click', (event) => {
-            event.preventDefault();
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('username');
-            window.location.href = '/haining_biomed_war/';
-        });
-    }
-</script>
 </body>
 </html>

@@ -30,6 +30,7 @@ public class KnowledgeBaseController {
         dispatcher.registerGetMapping("/dosingGuideline", this::dosingGuideline);
         dispatcher.registerGetMapping("/signin", this::signin);
         dispatcher.registerGetMapping("/signup",this::signup);
+        dispatcher.registerGetMapping("/homepage",this::homepage);
     }
 
 
@@ -37,6 +38,9 @@ public class KnowledgeBaseController {
         request.getRequestDispatcher("/views/signup.jsp").forward(request, response);
     }
 
+    public void homepage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("/views/real_index.jsp").forward(request,response);
+    }
     public void signin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/views/signin.jsp").forward(request, response);
     }
