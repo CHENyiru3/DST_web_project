@@ -37,12 +37,10 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Precision Medicine Matching System</a>
     <ul class="navbar-nav px-3" id="userNav">
-        <li class="nav-item">
-            <span class="nav-link">Welcome, ${username}!</span>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/haining_biomed_war/" id="logoutLink">Logout</a>
-        </li>
+        <div class="btn-group" role="group">
+            <a class="btn btn-primary">Welcome!!</a>
+            <a href="/haining_biomed_war/" class="btn btn-secondary" id="logoutLink">Logout</a>
+        </div>
     </ul>
 </nav>
 
