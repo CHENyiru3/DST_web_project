@@ -37,12 +37,10 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Precision Medicine Matching System</a>
     <ul class="navbar-nav px-3" id="userNav">
-        <li class="nav-item">
-            <a class="nav-link" href="signin">Sign In</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="signup">Sign Up</a>
-        </li>
+        <div class="btn-group" role="group">
+            <a href="signin" class="btn btn-primary">Sign In</a>
+            <a href="signup" class="btn btn-secondary">Sign Up</a>
+        </div>
     </ul>
 </nav>
 
